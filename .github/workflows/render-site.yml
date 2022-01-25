@@ -44,6 +44,10 @@ jobs:
       # - name: Render syllabus
       #   run: Rscript -e "rmarkdown::render('syllabus.Rmd', output_format = 'pdf_document')"
       # Run html rendering
+      - name: Run render shiny
+        run: Rscript -e "rmarkdown::run('quizes/test.Rmd')"
+      
+      # Run html rendering
       - name: Run render html
         id: site
         run: Rscript -e "rmarkdown::render_site()"
