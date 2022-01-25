@@ -46,6 +46,7 @@ RUN apt-get -y --no-install-recommends install \
 # Commonly used R packages
 RUN Rscript -e  "install.packages( \
     c('bookdown', \
+      'fastmap', \
       'here', \
       'leanpubr', \
       'optparse', \
@@ -55,10 +56,9 @@ RUN Rscript -e  "install.packages( \
       'rprojroot', \
       'rgoogleslides', \
       'servr', \
+      'shiny', \
       'spelling', \
       'styler', \
-      'shiny', \
-      'learnr', \
       'reticulate'))"
 
 # Copy over git token and package list
