@@ -58,6 +58,7 @@ RUN Rscript -e  "install.packages( \
       'spelling', \
       'styler', \
       'learnr', \
+      'shiny', \
       'reticulate'))"
 
 # Copy over git token and package list
