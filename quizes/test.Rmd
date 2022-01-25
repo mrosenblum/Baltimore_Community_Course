@@ -1,23 +1,25 @@
 ---
 title: "Hello, Tutorial!"
-output: learnr::tutorial
-runtime: shiny_prerendered
+output: html_document
+runtime: shiny
 ---
 
-```{r setup, include=FALSE}
-library(learnr)
-```
+```{r, echo=FALSE}
+shinyApp(
 
-This code computes the answer to one plus one, change it so it computes two plus two:
+  ui = fluidPage(
+    selectInput("region", "Region:",
+                choices = colnames(WorldPhones)),
+    plotOutput("phonePlot")
+  ),
 
-```{r q1, echo=FALSE}
-question("What number is the letter A in the English alphabet?",
-  answer("8"),
-  answer("14"),
-  answer("1", correct = TRUE),
-  answer("23")
+  server = function(input, output) {
+    output$phonePlot = renderPlot({
+      barplot(WorldPhones[,input$region]*1000,
+              ylab = "Number of Telephones", xlab = "Year")
+    })
+  },
+
+  options = list(height = 500)
 )
-```
-
-```{r}
 ```
